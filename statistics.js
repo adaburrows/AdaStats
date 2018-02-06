@@ -1,201 +1,9 @@
-/**
- * @fileOverview Embarrassingly basic, yet flexible statistics library.
- * Focused around finding the minimum, maximum, mean, variance, or
- * deviation of a set. It also allows binning a series into a set of
- * ranges and applying a statistical function to those ranges.
- *
- * @author <a href="mailto:jill@adaburrowss.com">Jill Burrows</a>
- * @version 1.0.0
- *
- */
 
 define(function() {
 
   'use strict';
 
   var Statistics = {
-
-    /**
-     * round_down() Rounds a number down to to nearest mulitple of nearest_unit
-     *
-     * @param {number} number
-     * @param {number} nearest_unit 
-     * @returns {number} number rounded down
-     */
-    round_down: function(number, nearest_unit) {
-      return Math.floor(number/nearest_unit) * nearest_unit;
-    },
-
-    /**
-     * round_down() Rounds a number up to to nearest mulitple of nearest_unit
-     *
-     * @param {number} number
-     * @param {number} nearest_unit 
-     * @returns {number} number rounded up
-     */
-    round_up: function(number, nearest_unit) {
-      return Math.ceil(number/nearest_unit) * nearest_unit;
-    },
-
-    /**
-     * log_2() returns the base 2 logarithm of a number
-     *
-     * @param {number} number
-     * @returns {number} Base 2 logarithm
-     */
-    log_2: function(number) {
-      return Math.log(number) / Math.log(2);
-    },
-
-    /**
-     * x_getter() returns the x coordinate from a point
-     *
-     * @param {Array} data Array of data points
-     * @param {number} i Index for the i^th point
-     * @returns {number} The x coordinate from the i^th point
-     */
-    x_getter: function(data, i) {
-      return data[i][0];
-    },
-
-    /**
-     * y_getter() returns the y coordinate from a point
-     *
-     * @param {Array} data Array of data points
-     * @param {number} i Index for the i^th point
-     * @returns {number} The y coordinate from the i^th point
-     */
-    y_getter: function(data, i) {
-      return data[i][1];
-    },
-
-   /**
-     * element_getter() returns a data point
-     *
-     * @param {Array} data Array of data points
-     * @param {number} i Index for the i^th point
-     * @returns {number} The i^th data point
-     */
-    element_getter: function(data, i) {
-      return data[i];
-    },
-
-    /**
-     * min() returns the minimum value of a data set
-     *
-     * @param {Array} data Array of data points
-     * @param {Function} [accessor] Accessor function used to select the coordinate
-     * @returns {number} The minimum value
-     */
-    min: function(data, accessor) {
-      var length = data.length,
-        getter = this.y_getter,
-        curr = 0,
-        min = null;
-
-      if (accessor) {
-        getter = accessor;
-      }
-
-      min = getter(data, 0);
-
-      for (var i = 1; i < length; i++) {
-        curr = getter(data, i);
-        if(curr < min) {
-          min = curr;
-        }
-      }
-
-      return min;
-    },
-
-    /**
-     * max() returns the maximum value of a data set
-     *
-     * @param {Array} data Array of data points
-     * @param {Function} [accessor] Accessor function used to select the coordinate
-     * @returns {number} The maximum value
-     */
-    max: function(data, accessor) {
-      var length = data.length,
-        getter = this.y_getter,
-        curr = 0,
-        max = null;
-
-      if (accessor) {
-        getter = accessor;
-      }
-
-      max = getter(data, 0);
-
-      for (var i = 1; i < length; i++) {
-        curr = getter(data, i);
-        if(curr > max) {
-          max = curr;
-        }
-      }
-      return max;
-    },
-
-    /**
-     * mean() returns the mean (first moment) of a data set
-     *
-     * @param {Array} data Array of data points
-     * @param {Function} [accessor] Accessor function used to select the coordinate
-     * @returns {number} The mean value
-     */
-    mean: function(data, accessor) {
-      var length = data.length,
-        getter = this.y_getter,
-        sum = 0;
-
-      if (accessor) {
-        getter = accessor;
-      }
-
-      for (var i = 0; i < length; i++) {
-        sum += getter(data, i);
-      }
-      return sum / length;
-    },
-
-    /**
-     * variance() returns the variance (second moment) of a data set
-     *
-     * @param {Array} data Array of data points
-     * @param {Function} [accessor] Accessor function used to select the coordinate
-     * @returns {number} The value of variance
-     */
-    variance: function(data, accessor) {
-      var length = data.length,
-        getter = this.y_getter,
-        sum = 0,
-        m = 0,
-        v = 0;
-
-      if (accessor) {
-        getter = accessor;
-      }
-
-      m = this.mean(data, getter);
-
-      for (var i = 0; i < length; i++) {
-        v = getter(data, i);
-        sum += (v - m) * (v - m);
-      }
-      return sum / length;
-    },
-
-    /**
-     * deviation() returns the standard deviation of a data set
-     *
-     * @param {Array} data Array of data points
-     * @param {Function} [accessor] Accessor function used to select the coordinate
-     * @returns {number} The standard deviation
-     */
-    deviation: function(data, accessor) {
-      return Math.sqrt(this.variance(data, accessor));
-    },
 
     /**
      * select() executes the callback when the function expression is true
@@ -434,7 +242,7 @@ define(function() {
     },
 
     /**
-     * bin_min() 
+     * bin_min()
      *
      * @param {Array} data Data set
      * @param {number} lower_bound Lowest coordinate value to retain
@@ -459,7 +267,7 @@ define(function() {
     },
 
     /**
-     * bin_max() 
+     * bin_max()
      *
      * @param {Array} data Data set
      * @param {number} lower_bound Lowest coordinate value to retain
@@ -484,7 +292,7 @@ define(function() {
     },
 
     /**
-     * bin_sum() 
+     * bin_sum()
      *
      * @param {Array} data Data set
      * @param {number} lower_bound Lowest coordinate value to retain
@@ -506,7 +314,7 @@ define(function() {
     },
 
     /**
-     * bin_mean() 
+     * bin_mean()
      *
      * @param {Array} data Data set
      * @param {number} lower_bound Lowest coordinate value to retain
@@ -531,7 +339,7 @@ define(function() {
     },
 
     /**
-     * bin_variance() 
+     * bin_variance()
      *
      * @param {Array} data Data set
      * @param {number} lower_bound Lowest coordinate value to retain
@@ -556,7 +364,7 @@ define(function() {
     },
 
     /**
-     * bin_deviation() 
+     * bin_deviation()
      *
      * @param {Array} data Data set
      * @param {number} lower_bound Lowest coordinate value to retain
