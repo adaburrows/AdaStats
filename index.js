@@ -21,6 +21,7 @@ export {default as y_projector} from './src/projectors/y';
 
 // Filtering functions
 export {default as select} from './src/filters/select';
+export {default as filter_range} from './src/filters/filter_range';
 
 // Basic Statistic Operations
 export {default as min} from './src/min';
