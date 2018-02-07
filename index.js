@@ -39,3 +39,4 @@ export {default as union} from './src/accumulators/union';
 // Binning functions
 export {default as bin_size} from './src/binning/bin_size';
 export {default as bin_count} from './src/binning/bin_count';
+export {default as post_process_bins} from './src/binning/post_process_bins';
