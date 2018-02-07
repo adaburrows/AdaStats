@@ -23,3 +23,4 @@ export {default as y_projector} from './src/projectors/y';
 export {default as min} from './src/min';
 export {default as max} from './src/max';
 export {default as mean} from './src/mean';
+export {default as variance} from './src/variance';
