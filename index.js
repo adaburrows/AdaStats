@@ -19,6 +19,9 @@ export {default as identity_projector} from './src/projectors/identity';
 export {default as x_projector} from './src/projectors/x';
 export {default as y_projector} from './src/projectors/y';
 
+// Filtering functions
+export {default as select} from './src/filters/select';
+
 // Basic Statistic Operations
 export {default as min} from './src/min';
 export {default as max} from './src/max';
