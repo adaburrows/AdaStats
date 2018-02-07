@@ -32,3 +32,4 @@ export {default as deviation} from './src/deviation';
 
 // Binning functions
 export {default as bin_size} from './src/binning/bin_size';
+export {default as bin_count} from './src/binning/bin_count';
