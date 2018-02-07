@@ -29,3 +29,6 @@ export {default as max} from './src/max';
 export {default as mean} from './src/mean';
 export {default as variance} from './src/variance';
 export {default as deviation} from './src/deviation';
+
+// Binning functions
+export {default as bin_size} from './src/binning/bin_size';
