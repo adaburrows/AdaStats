@@ -30,6 +30,12 @@ export {default as mean} from './src/mean';
 export {default as variance} from './src/variance';
 export {default as deviation} from './src/deviation';
 
+// Accumulator functions
+export {default as integer_generator} from './src/accumulators/integer';
+export {default as summation} from './src/accumulators/summation';
+export {default as array_generator} from './src/accumulators/array';
+export {default as union} from './src/accumulators/union';
+
 // Binning functions
 export {default as bin_size} from './src/binning/bin_size';
 export {default as bin_count} from './src/binning/bin_count';
