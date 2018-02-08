@@ -56,4 +56,55 @@ describe('Binning', function() {
 
   });
 
+  describe('Binning Utilities', function() {
+
+    describe('bin_size()', function() {
+
+      /**
+       * Imagine a number line broken down exactly into 6 bins of size 11:
+       *
+       *-33   -22   -11   0      11    22    33
+       * +-----+-----+-----+-----+-----+-----+
+       * |  1  |  2  |  3  |  4  |  5  |  6  |
+       * +-----+-----+-----+-----+-----+-----+
+       */
+
+      it('should return the size of the bins given bounds and a count of the bins', function() {
+        var size = stats.bin_size(-33,33,6);
+        expect(size).to.be.a('number');
+        expect(size).to.equal(11);
+      });
+
+    });
+
+    describe('bin_count()', function() {
+
+      // Use the same visual as above for reference
+
+      it('should return the number of the bins given bounds and a size of the bins', function() {
+        var n = stats.bin_size(-33,33,11);
+        expect(n).to.be.a('number');
+        expect(n).to.equal(6);
+      });
+
+      /**
+       * Imagine a number line broken down exactly into 4 bins of size 10:
+       *
+       *-10    0     10    20    30
+       * +-----+-----+-----+-----+
+       * |  1  |  2  |  3  |  4  |
+       * +-----+-----+-----+-----+
+       * Since 23 is greater than 20 and each bin is size 10, there should be a bin for it to fill
+       */
+
+      it('should return the number of the bins given bounds and a size of the bins', function() {
+        var n = stats.bin_size(-10,23,10);
+        expect(n).to.be.a('number');
+        expect(n).to.equal(4);
+      });
+
+    });
+
+  });
+
 });
