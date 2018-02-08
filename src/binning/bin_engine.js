@@ -12,12 +12,12 @@ import post_process_bins from './post_process_bins';
  * @param {number} bin_size
  * @param {Function} generator Function to initialize bins, corresponds to data_processing_function
  * @param {Function} data_processing_function Either toss_in_bin() or accumulate()
- * @param {Function} [bin_processing_function] Function to process data once in bins, usually used with toss_in_bin()
  * @param {Function} [filter_projector] the image of the projector function is used for filtering
  * @param {Function} [data_projector] the image of the projector function in the codomain of the current bin is accumulated in the bins
+ * @param {Function} [bin_processing_function] Function to process data once in bins, usually used with toss_in_bin()
  * @returns {Array} Bins of processed data!
  */
-function bin_engine (data, lower_bound, upper_bound, bin_size, generator, data_processing_function, bin_processing_function, filter_projector, data_projector) {
+function bin_engine (data, lower_bound, upper_bound, bin_size, generator, data_processing_function, filter_projector, data_projector, bin_processing_function) {
   var count = bin_count(lower_bound, upper_bound, bin_size),
       bins     = [],
       filter_getter = identity_projector,
