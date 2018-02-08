@@ -143,6 +143,32 @@ describe('Binning', function() {
 
     });
 
+    describe('bin_engine()', function() {
+
+      /**
+       * Imagine a number line broken down exactly into 4 bins of size 10:
+       *
+       *-10    0     10    20    30
+       * +-----+-----+-----+-----+
+       * |  1  |  2  |  3  |  4  |
+       * +-----+-----+-----+-----+
+       */
+
+      it('should bin data into 4 bins of size ten ranging from -10 to 30', function() {
+        var data = [-10, -5, 2, 4, 8, 11, 15, 19, 23, 27];
+        var preworked_bins = [
+          [-5, [-10,-5]],
+          [5, [2, 4, 8]],
+          [15, [11, 15, 19]],
+          [25, [23, 27]]
+        ];
+        var bins = stats.bin_engine(data, -10, 30, 10, stats.array_generator, stats.union);
+
+        expect(bins).to.deep.equal(preworked_bins);
+      });
+
+    });
+
   });
 
 });
