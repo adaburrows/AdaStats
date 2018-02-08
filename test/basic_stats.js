@@ -72,4 +72,32 @@ describe('Basic Statistics', function() {
 
   });
 
+  describe('variance()', function() {
+
+    it('should return the variance of the numbers in the list', function() {
+      var mean = stats.variance(numberList);
+      expect(mean).to.be.finite;
+      expect(mean).to.closeTo(1119.4722, 0.0001);
+    });
+
+    it('should return the variance of the x-values in the list', function() {
+      var x_mean = stats.variance(pointList, stats.x_projector);
+      expect(x_mean).to.be.finite;
+      expect(x_mean).to.closeTo(1088.8055, 0.0001);
+    });
+
+    it('should return the variance of the y-values in the list', function() {
+      var y_mean = stats.variance(pointList, stats.y_projector);
+      expect(y_mean).to.be.finite;
+      expect(y_mean).to.closeTo(1267.5555, 0.0001);
+    });
+
+  });
+
+  describe('deviation()', function() {
+
+    xit('should just be the square root of the last function, so why bother testing the Math lib?');
+
+  });
+
 });
