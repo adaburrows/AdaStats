@@ -31,8 +31,10 @@ export {default as variance} from './src/variance';
 export {default as deviation} from './src/deviation';
 
 // Accumulator functions
+export {default as undefined_generator} from './src/accumulators/undefined';
 export {default as integer_generator} from './src/accumulators/integer';
 export {default as summation} from './src/accumulators/summation';
+export {default as min_accumulator} from './src/accumulators/min';
 export {default as array_generator} from './src/accumulators/array';
 export {default as union} from './src/accumulators/union';
 
@@ -43,3 +45,4 @@ export {default as post_process_bins} from './src/binning/post_process_bins';
 export {default as bin_engine} from './src/binning/bin_engine';
 export {default as bin_data} from './src/binning/bin_data';
 export {default as bin_sum} from './src/binning/bin_sum';
+export {default as bin_min} from './src/binning/bin_min';

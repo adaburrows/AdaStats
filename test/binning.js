@@ -207,4 +207,21 @@ describe('Binning', function() {
 
   });
 
+  describe('bin_min()', function() {
+
+    it('should find the minumum within 4 bins of size ten ranging from -10 to 30', function() {
+      var data = [-10, -5, 2, 4, 8, 11, 15, 19, 23, 27];
+      var preworked_bins = [
+        [-5, -10],
+        [5, 2],
+        [15, 11],
+        [25, 23]
+      ];
+      var bins = stats.bin_min(data, -10, 30, 10);
+
+      expect(bins).to.deep.equal(preworked_bins);
+    });
+
+  });
+
 });
