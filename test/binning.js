@@ -167,6 +167,42 @@ describe('Binning', function() {
         expect(bins).to.deep.equal(preworked_bins);
       });
 
+      it('should take complicated data as the codomain and bin the image of the data projector into bin over the image of the binning projector function');
+
+    });
+
+  });
+
+  describe('bin_data()', function() {
+
+    it('should bin data into 4 bins of size ten ranging from -10 to 30', function() {
+      var data = [-10, -5, 2, 4, 8, 11, 15, 19, 23, 27];
+      var preworked_bins = [
+        [-5, [-10,-5]],
+        [5, [2, 4, 8]],
+        [15, [11, 15, 19]],
+        [25, [23, 27]]
+      ];
+      var bins = stats.bin_data(data, -10, 30, 10);
+
+      expect(bins).to.deep.equal(preworked_bins);
+    });
+
+  });
+
+  describe('bin_sum()', function() {
+
+    it('should sum data within 4 bins of size ten ranging from -10 to 30', function() {
+      var data = [-10, -5, 2, 4, 8, 11, 15, 19, 23, 27];
+      var preworked_bins = [
+        [-5, -15],
+        [5, 14],
+        [15, 45],
+        [25, 50]
+      ];
+      var bins = stats.bin_sum(data, -10, 30, 10);
+
+      expect(bins).to.deep.equal(preworked_bins);
     });
 
   });

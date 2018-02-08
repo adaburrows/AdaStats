@@ -6,28 +6,6 @@ define(function() {
   var Statistics = {
 
     /**
-     * bin_data() bins data!
-     *
-     * @param {Array} data Data set
-     * @param {number} lower_bound Lowest coordinate value to retain
-     * @param {number} upper_bound Highest coordinate value to retain
-     * @param {number} bin_size
-     * @param {Function} [basis_bin_engine] Determine the axis to bin. Either x_bin_engine or y_bin_engine.
-     * @returns {Array} Bins of arrays of data!
-     */
-    bin_data: function(data, lower_bound, upper_bound, bin_size, basis_bin_engine) {
-      var bin_engine = this.x_bin_engine;
-
-      if (basis_bin_engine) {
-        bin_engine = basis_bin_engine;
-      }
-
-      return bin_engine.call(this,
-        data, lower_bound, upper_bound, bin_size, this.array_generator, this.toss_in_bin
-      );
-    },
-
-    /**
      * bin_min()
      *
      * @param {Array} data Data set
@@ -74,28 +52,6 @@ define(function() {
         function(bins, i){
           bins[i] = self.max(bins[i], self.element_getter);
         }
-      );
-    },
-
-    /**
-     * bin_sum()
-     *
-     * @param {Array} data Data set
-     * @param {number} lower_bound Lowest coordinate value to retain
-     * @param {number} upper_bound Highest coordinate value to retain
-     * @param {number} bin_size
-     * @param {Function} [basis_bin_engine] Determine the axis to bin. Either x_bin_engine or y_bin_engine.
-     * @returns {Array} Bins containing the sum of values in the bin range
-     */
-    bin_sum: function(data, lower_bound, upper_bound, bin_size, basis_bin_engine) {
-      var bin_engine = this.x_bin_engine;
-
-      if (basis_bin_engine) {
-        bin_engine = basis_bin_engine;
-      }
-
-      return bin_engine.call(this,
-        data, lower_bound, upper_bound, bin_size, this.integer_generator, this.accumulate
       );
     },
 
