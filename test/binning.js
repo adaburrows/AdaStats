@@ -224,4 +224,21 @@ describe('Binning', function() {
 
   });
 
+  describe('bin_max()', function() {
+
+    it('should find the maxumum within 4 bins of size ten ranging from -10 to 30', function() {
+      var data = [-10, -5, 2, 4, 8, 11, 15, 19, 23, 27];
+      var preworked_bins = [
+        [-5, -5],
+        [5, 8],
+        [15, 19],
+        [25, 27]
+      ];
+      var bins = stats.bin_max(data, -10, 30, 10);
+
+      expect(bins).to.deep.equal(preworked_bins);
+    });
+
+  });
+
 });
