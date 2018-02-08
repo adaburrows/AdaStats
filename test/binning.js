@@ -107,4 +107,42 @@ describe('Binning', function() {
 
   });
 
+  describe('Binning Core', function() {
+
+    describe('post_process_bins()', function() {
+
+      const original_bins = [[-10,-8,-6,-4], [0,1,2,3], [10,15]];
+      const centers = [-5,5,15];
+
+      it('should package bins into an array with the first element as the center of the bin and the second element should contian the bin', function() {
+        var bins = [[-10,-8,-6,-4], [0,1,2,3], [10,15]];
+        stats.post_process_bins(3, 10, -10, bins);
+
+        for (var i = 0; i < 3; i ++) {
+          expect(bins[i][0]).to.equal(centers[i]);
+          expect(bins[i][1]).to.deep.equal(original_bins[i]);
+        }
+      });
+
+      it('should call the bin_processing_function with the proper data', function() {
+        var bins = [[-10,-8,-6,-4], [0,1,2,3], [10,15]];
+        var test_bins = [];
+        var test_indices = [];
+        function test_processing_function (bins, i){
+          test_bins.push(bins[i]);
+          test_indices.push(i);
+        }
+
+        stats.post_process_bins(3, 10, -10, bins, test_processing_function);
+
+        for (var i = 0; i < 3; i ++) {
+          expect(test_bins[i]).to.deep.equal(original_bins[i]);
+          expect(test_indices[i]).to.equal(i);
+        }
+      });
+
+    });
+
+  });
+
 });
