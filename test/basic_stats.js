@@ -96,7 +96,9 @@ describe('Basic Statistics', function() {
 
   describe('deviation()', function() {
 
-    xit('should just be the square root of the last function, so why bother testing the Math lib?');
+    it('should just be the square root of the last function, just check it does not throw', function() {
+      expect(function () { stats.deviation([1,2,3,4]); }).to.not.throw;
+    });
 
   });
 
