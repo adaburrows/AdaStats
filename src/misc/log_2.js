@@ -2,7 +2,7 @@
  * log_2() returns the base 2 logarithm of a number
  *
  * @param {number} number
- * @returns {number} Base 2 logarithm
+ * @returns {number} - base 2 logarithm
  *
  * @example
  * log_2(4); // yields 2, since 2^2 = 4

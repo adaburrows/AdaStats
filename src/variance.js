@@ -4,20 +4,16 @@ import mean from './mean';
 /**
  * variance() returns the variance (second moment) of a data set
  *
- * @param {Array} data Array of data points
- * @param {Function} [projector] projector function used to select the coordinate
- * @returns {number} The value of variance
+ * @param {Array} data - array of data points
+ * @param {Function} [projector] - projector function used to select the coordinate
+ * @returns {number} - the value of variance
  */
 function variance (data, projector) {
-  var length = data.length,
-    getter = identity_projector,
-    sum = 0,
-    m = 0,
-    v = 0;
-
-  if (projector) {
-    getter = projector;
-  }
+  var length = data.length;
+  var getter = projector ? projector : identity_projector;
+  var sum = 0;
+  var m = 0;
+  var v = 0;
 
   m = mean(data, getter);
 

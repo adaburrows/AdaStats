@@ -1,10 +1,10 @@
 /**
- * min() Accumulates minimum values in a bin
+ * min() accumulates minimum values in a bin
  * This is used for composing more advanced functionality
  *
- * @param {Array} bins - Array of bins
- * @param {number} bin - Current bin
- * @param {number} value - Value to accumulate in the current bin
+ * @param {Array} bins - array of bins
+ * @param {number} bin - current bin
+ * @param {number} value - value to accumulate in the current bin
  */
 function min (bins, bin, value) {
   if (value <= (bins[bin] ? bins[bin] : value)) {

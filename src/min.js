@@ -8,15 +8,11 @@ import identity_projector from './projectors/identity';
  * @returns {number} - the minimum value
  */
 function min (data, projector) {
-  var length = data.length,
-    getter = identity_projector,
-    curr = 0,
-    min = null;
-
-  if (projector) {
-    getter = projector;
-  }
-
+  var length = data.length;
+  var getter = projector ? projector : identity_projector;
+  var curr = 0;
+  var min = null;
+  
   min = getter(data, 0);
 
   for (var i = 1; i < length; i++) {

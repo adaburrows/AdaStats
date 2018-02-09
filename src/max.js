@@ -8,14 +8,10 @@ import identity_projector from './projectors/identity';
  * @returns {number} - the maximum value
  */
 function max (data, projector) {
-  var length = data.length,
-    getter = identity_projector,
-    curr = 0,
-    max = null;
-
-  if (projector) {
-    getter = projector;
-  }
+  var length = data.length;
+  var getter = projector ? projector : identity_projector;
+  var curr = 0;
+  var max = null;
 
   max = getter(data, 0);
 

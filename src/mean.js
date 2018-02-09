@@ -8,13 +8,9 @@ import identity_projector from './projectors/identity';
  * @returns {number} - the mean value
  */
 function mean (data, projector) {
-  var length = data.length,
-    getter = identity_projector,
-    sum = 0;
-
-  if (projector) {
-    getter = projector;
-  }
+  var length = data.length;
+  var getter = projector ? projector : identity_projector;
+  var sum = null;
 
   for (var i = 0; i < length; i++) {
     sum += getter(data, i);

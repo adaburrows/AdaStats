@@ -6,47 +6,44 @@ import post_process_bins from './post_process_bins';
 /**
  * bin_engine() is the main workhorse behind all the data binning along a projection given by the filter_projector
  *
- * @param {Array} data Data set
- * @param {number} lower_bound Lowest x coordinate value to retain
- * @param {number} upper_bound Highest x coordinate value to retain
- * @param {number} bin_size
- * @param {Function} generator Function to initialize bins, corresponds to data_processing_function
- * @param {Function} data_processing_function Either toss_in_bin() or accumulate()
- * @param {Function} [filter_projector] the image of the projector function is used for filtering
- * @param {Function} [data_projector] the image of the projector function in the codomain of the current bin is accumulated in the bins
- * @param {Function} [bin_processing_function] Function to process data once in bins, usually used with toss_in_bin()
- * @returns {Array} Bins of processed data!
+ * @param {Array} data - data set
+ * @param {number} lower_bound - lowest value to retain in the image of the projector function over the codomain
+ * @param {number} upper_bound - highest value to retain in the image of the projector function over the codomain
+ * @param {number} bin_size - size of the bin
+ * @param {Function} generator - function to initialize bins, corresponds to data_processing_function
+ * @param {Function} data_processing_function - some function which processes data, like union or summation
+ * @param {Function} [filter_projector] - the image of the projector function is used for filtering
+ * @param {Function} [data_projector] - the image of the projector function is accumulated in the bins
+ * @param {Function} [bin_processing_function] - function to process data once in bins, usually used with union accumulator
+ * @returns {Array} - bins of processed data!
  */
 function bin_engine (data, lower_bound, upper_bound, bin_size, generator, data_processing_function, filter_projector, data_projector, bin_processing_function) {
-  var count = bin_count(lower_bound, upper_bound, bin_size),
-      bins     = [],
-      filter_getter = identity_projector,
-      data_getter = identity_projector,
-      i = 0;
+  var filter_getter = filter_projector ? filter_projector : identity_projector;
+  var data_getter = data_projector ? data_projector : identity_projector;
+  var count = bin_count(lower_bound, upper_bound, bin_size);
+  var bins = [];
+  var i = 0;
 
-  if (filter_projector) {
-    filter_getter = filter_projector;
-  }
-
-  if (data_projector) {
-    data_getter = data_projector;
-  }
-
-  // Initialize bins
+  // initialize bins
   for (i = 0; i < count; i++) {
     bins[i] = generator();
   }
 
   function data_kernel (data, i) {
-    // Calculate the floor of the bin
+
+    // calculate the floor of the bin
     var bin = Math.floor((filter_getter(data, i) - lower_bound) / bin_size);
+
+    // apply data processing function to the current bin
     data_processing_function(bins, bin, data_getter(data, i));
   }
 
-  // Sweep through the data using the integer divider of the range to accumulate the data in the proper bin
+  // sweep through the data using the integer divider of the range to accumulate the data in the proper bin
   filter_range(data, lower_bound, upper_bound, data_kernel, filter_getter);
 
+  // apply any post processing -- needed for current implementation of mean, variance, and deviation
   post_process_bins(count, bin_size, lower_bound, bins, bin_processing_function);
+
   return bins;
 }
 
