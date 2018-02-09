@@ -258,4 +258,21 @@ describe('Binning', function() {
 
   });
 
+  describe('bin_variance()', function() {
+
+    it('should find the variance for each of 4 bins of size ten ranging from -10 to 30', function() {
+      var data = [-10, -4, 4, 8, 13, 15, 23, 27];
+      var preworked_bins = [
+        [-5, 9],  // (-10+7)^2 + (-4+7)^2 = 9 + 9 = 18
+        [5, 4],   // (4-6)^2 + (8-6)^2 = 4 + 4 = 8
+        [15, 1],  // (13-14)^2 + (15-14)^2 = 1 + 1 = 2
+        [25, 4]   // (23-25)^2 + (27-25)^2 = 4 + 4 = 8
+      ];
+      var bins = stats.bin_variance(data, -10, 30, 10);
+
+      expect(bins).to.deep.equal(preworked_bins);
+    });
+
+  });
+
 });

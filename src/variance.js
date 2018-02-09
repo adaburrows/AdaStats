@@ -1,4 +1,5 @@
 import identity_projector from './projectors/identity';
+import mean from './mean';
 
 /**
  * variance() returns the variance (second moment) of a data set
@@ -18,7 +19,7 @@ function variance (data, projector) {
     getter = projector;
   }
 
-  m = this.mean(data, getter);
+  m = mean(data, getter);
 
   for (var i = 0; i < length; i++) {
     v = getter(data, i);

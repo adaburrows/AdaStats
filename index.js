@@ -49,3 +49,4 @@ export {default as bin_sum} from './src/binning/bin_sum';
 export {default as bin_min} from './src/binning/bin_min';
 export {default as bin_max} from './src/binning/bin_max';
 export {default as bin_mean} from './src/binning/bin_mean';
+export {default as bin_variance} from './src/binning/bin_variance';
