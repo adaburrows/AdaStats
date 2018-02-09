@@ -241,4 +241,21 @@ describe('Binning', function() {
 
   });
 
+  describe('bin_mean()', function() {
+
+    it('should find the mean for each of 4 bins of size ten ranging from -10 to 30', function() {
+      var data = [-10, -4, 4, 8, 13, 15, 23, 27];
+      var preworked_bins = [
+        [-5, -7],
+        [5, 6],
+        [15, 14],
+        [25, 25]
+      ];
+      var bins = stats.bin_mean(data, -10, 30, 10);
+
+      expect(bins).to.deep.equal(preworked_bins);
+    });
+
+  });
+
 });
