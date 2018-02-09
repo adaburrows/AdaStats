@@ -1,3 +1,5 @@
+import variance from './variance';
+
 /**
  * deviation() returns the standard deviation of a data set
  *
@@ -6,7 +8,7 @@
  * @returns {number} - the standard deviation
  */
 function deviation (data, projector) {
-  return Math.sqrt(this.variance(data, projector));
+  return Math.sqrt(variance(data, projector));
 }
 
 export default deviation;
