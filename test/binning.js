@@ -167,7 +167,76 @@ describe('Binning', function() {
         expect(bins).to.deep.equal(preworked_bins);
       });
 
-      it('should take complicated data as the codomain and bin the image of the data projector into bin over the image of the binning projector function');
+      it('should take complicated data as the codomain and bin the image of the data projector into bin over the image of the binning projector function', function () {
+        var codomain = [
+          {
+            date: 1,
+            data: {
+              temperature: 95,
+              humidity: 20,
+              windspeed: 100
+            }
+          },
+          {
+            date: 2,
+            data: {
+              temperature: 200,
+              humidity: 80,
+              windspeed: 95
+            }
+          },
+          {
+            date: 3,
+            data: {
+              temperature: -300,
+              humidity: 0,
+              windspeed: 0
+            }
+          },
+          {
+            date: 4,
+            data: {
+              temperature: -250,
+              humidity: 0,
+              windspeed: 0
+            }
+          },
+          {
+            date: 5,
+            data: {
+              temperature: 30,
+              humidity: 10,
+              windspeed: 40
+            }
+          },
+          {
+            date: 6,
+            data: {
+              temperature: 95,
+              humidity: 30,
+              windspeed: 100
+            }
+          }
+        ];
+        var preworked_bins = [
+          [2, [95, 200]],
+          [4, [-300, -250]],
+          [6, [30, 95]]
+        ];
+
+        function filter_projector(data, i) {
+          return data[i].date;
+        }
+
+        function data_projector(data, i) {
+          return data[i].data.temperature;
+        }
+
+        var bins = stats.bin_engine(codomain, 1, 6, 2, stats.array_generator, stats.union, filter_projector, data_projector);
+
+        expect(bins).to.deep.equal(preworked_bins);
+
+      });
 
     });
 
