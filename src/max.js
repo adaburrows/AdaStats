@@ -1,4 +1,5 @@
 import identity_projector from './projectors/identity';
+import stateful_max_accumulator from './accumulators/stateful/max';
 
 /**
  * max() returns the maximum value of a data set
@@ -11,17 +12,13 @@ function max (data, projector) {
   var length = data.length;
   var getter = projector ? projector : identity_projector;
   var curr = 0;
-  var max = null;
-
-  max = getter(data, 0);
+  var max = stateful_max_accumulator();
 
   for (var i = 1; i < length; i++) {
-    curr = getter(data, i);
-    if(curr > max) {
-      max = curr;
-    }
+    max.accumulate(getter(data, i));
   }
-  return max;
+
+  return max.valueOf();
 }
 
 export default max;
