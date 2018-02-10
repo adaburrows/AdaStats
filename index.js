@@ -32,13 +32,6 @@ export {default as variance} from './src/variance';
 export {default as deviation} from './src/deviation';
 
 // Accumulator functions
-export {default as undefined_generator} from './src/accumulators/undefined';
-export {default as integer_generator} from './src/accumulators/integer';
-export {default as summation} from './src/accumulators/summation';
-export {default as min_accumulator} from './src/accumulators/min';
-export {default as max_accumulator} from './src/accumulators/max';
-export {default as array_generator} from './src/accumulators/array';
-export {default as union} from './src/accumulators/union';
 export {default as generic_accumulator} from './src/accumulators/generic';
 export {default as stateful_set_accumulator} from './src/accumulators/stateful/set';
 export {default as stateful_sum_accumulator} from './src/accumulators/stateful/sum';
