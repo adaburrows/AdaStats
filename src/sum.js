@@ -1,5 +1,5 @@
 import identity_projector from './projectors/identity';
-import stateful_sum_accumulator from './accumulators/stateful/sum';
+import stateful_sum_accumulator from './accumulators/stateful/neumaier_sum';
 
 /**
  * sum() returns the sum of a data set

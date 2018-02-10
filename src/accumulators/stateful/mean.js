@@ -1,4 +1,5 @@
 import Accumulator from './accumulator';
+import neumaier_sum from './neumaier_sum';
 
 /**
  * Mean accumulator
@@ -7,17 +8,17 @@ import Accumulator from './accumulator';
  class Mean extends Accumulator {
    constructor() {
      super();
-     this.sum = 0;
+     this.sum = neumaier_sum();
      this.count = 0;
    }
 
    accumulate(value) {
-     this.sum += value;
+     this.sum.accumulate(value);
      this.count++;
    }
 
    valueOf() {
-     return this.sum/this.count;
+     return this.sum.valueOf()/this.count;
    }
  }
 

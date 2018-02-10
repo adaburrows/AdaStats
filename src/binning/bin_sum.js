@@ -1,5 +1,5 @@
 import generic_accumulator from '../accumulators/generic';
-import sum from '../accumulators/stateful/sum';
+import sum from '../accumulators/stateful/neumaier_sum';
 import bin_engine from './bin_engine';
 
 /**
