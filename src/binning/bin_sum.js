@@ -1,5 +1,5 @@
-import integer_generator from '../accumulators/integer';
-import summation from '../accumulators/summation';
+import generic_accumulator from '../accumulators/generic';
+import sum from '../accumulators/stateful/sum';
 import bin_engine from './bin_engine';
 
 /**
@@ -15,7 +15,7 @@ import bin_engine from './bin_engine';
  * @returns {Array} - bins of arrays of data
  */
 function bin_sum (data, lower_bound, upper_bound, bin_size, binning_projector, data_projector, bin_processing_function) {
-  return bin_engine(data, lower_bound, upper_bound, bin_size, integer_generator, summation, binning_projector, data_projector, bin_processing_function);
+  return bin_engine(data, lower_bound, upper_bound, bin_size, sum, generic_accumulator, binning_projector, data_projector, bin_processing_function);
 }
 
 export default bin_sum;

@@ -24,6 +24,7 @@ export {default as select} from './src/filters/select';
 export {default as filter_range} from './src/filters/filter_range';
 
 // Basic Statistic Operations
+export {default as sum} from './src/sum';
 export {default as min} from './src/min';
 export {default as max} from './src/max';
 export {default as mean} from './src/mean';
@@ -38,6 +39,10 @@ export {default as min_accumulator} from './src/accumulators/min';
 export {default as max_accumulator} from './src/accumulators/max';
 export {default as array_generator} from './src/accumulators/array';
 export {default as union} from './src/accumulators/union';
+export {default as generic_accumulator} from './src/accumulators/generic';
+export {default as stateful_set_accumulator} from './src/accumulators/stateful/set';
+export {default as stateful_sum_accumulator} from './src/accumulators/stateful/sum';
+export {default as stateful_min_accumulator} from './src/accumulators/stateful/min';
 
 // Binning functions
 export {default as bin_size} from './src/binning/bin_size';
