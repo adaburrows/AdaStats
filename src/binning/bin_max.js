@@ -1,5 +1,5 @@
-import undefined_generator from '../accumulators/undefined';
-import max_accumulator from '../accumulators/max';
+import generic_accumulator from '../accumulators/generic';
+import max from '../accumulators/stateful/max';
 import bin_engine from './bin_engine';
 
 /**
@@ -15,7 +15,7 @@ import bin_engine from './bin_engine';
  * @returns {Array} - bins of arrays of data
  */
 function bin_max (data, lower_bound, upper_bound, bin_size, binning_projector, data_projector, bin_processing_function) {
-  return bin_engine(data, lower_bound, upper_bound, bin_size, undefined_generator, max_accumulator, binning_projector, data_projector, bin_processing_function);
+  return bin_engine(data, lower_bound, upper_bound, bin_size, max, generic_accumulator, binning_projector, data_projector, bin_processing_function);
 }
 
 export default bin_max;

@@ -1,7 +1,6 @@
-import array_generator from '../accumulators/array';
-import union from '../accumulators/union';
+import generic_accumulator from '../accumulators/generic';
+import mean from '../accumulators/stateful/mean';
 import bin_engine from './bin_engine';
-import mean from '../mean';
 
 /**
  * bin_mean() calculates the mean within each bin of data
@@ -15,9 +14,7 @@ import mean from '../mean';
  * @returns {Array} - bins of arrays of data
  */
 function bin_mean (data, lower_bound, upper_bound, bin_size, binning_projector, data_projector, bin_processing_function) {
-  return bin_engine(data, lower_bound, upper_bound, bin_size, array_generator, union, binning_projector, data_projector, function bin_processing_function (bins, i) {
-    bins[i] = mean(bins[i]);
-  });
+  return bin_engine(data, lower_bound, upper_bound, bin_size, mean, generic_accumulator, binning_projector, data_projector);
 }
 
 export default bin_mean;
