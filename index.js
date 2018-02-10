@@ -35,6 +35,7 @@ export {default as deviation} from './src/deviation';
 export {default as generic_accumulator} from './src/accumulators/generic';
 export {default as stateful_set_accumulator} from './src/accumulators/stateful/set';
 export {default as stateful_sum_accumulator} from './src/accumulators/stateful/sum';
+export {default as stateful_neumaier_sum_accumulator} from './src/accumulators/stateful/neumaier_sum';
 export {default as stateful_min_accumulator} from './src/accumulators/stateful/min';
 export {default as stateful_max_accumulator} from './src/accumulators/stateful/max';
 export {default as stateful_mean_accumulator} from './src/accumulators/stateful/mean';

@@ -31,6 +31,30 @@ describe('Accumulators', function() {
         expect(s.valueOf()).to.equal(15);
       });
 
+      it('should fail to accumulate caertain values in a sum', function() {
+        var test = [1.0, parseFloat('1.0E+100'), 1.0, parseFloat('-1.0E+100'), 1.0];
+        var s = stats.stateful_sum_accumulator();
+
+        for (var i = 0; i < 5; i++) {
+          s.accumulate(test[i]);
+        }
+        expect(s.valueOf()).to.not.equal(3); // algebraicaly, this should be 3 -- but it's not
+      });
+
+    });
+
+    describe('Neumaier Sum accumulator', function() {
+
+      it('should accumulate values in a sum', function() {
+        var test = [1.0, parseFloat('1.0E+100'), 1.0, parseFloat('-1.0E+100'), 1.0];
+        var s = stats.stateful_neumaier_sum_accumulator();
+
+        for (var i = 0; i < 5; i++) {
+          s.accumulate(test[i]);
+        }
+        expect(s.valueOf()).to.equal(3);
+      });
+
     });
 
     describe('Min accumulator', function() {
