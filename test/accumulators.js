@@ -100,6 +100,20 @@ describe('Accumulators', function() {
 
     });
 
+    describe('Max accumulator', function() {
+
+      it('should accumulate the greates value', function() {
+        var test = [5,4,3,2,1];
+        var s = new stats.stateful_max_accumulator();
+
+        for (var i = 0; i < 5; i++) {
+          s.accumulate(test[i]);
+        }
+        expect(s.valueOf()).to.equal(5);
+      });
+
+    });
+
     describe('generic_accumulator()', function() {
 
       it('should adapt an accumulator to a set of bins', function() {
