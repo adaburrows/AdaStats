@@ -28,10 +28,10 @@ import Accumulator from './accumulator';
    valueOf() {
      return this.sum + this.correction; // only apply the correction at the end of the sum
    }
+
+   static generator() {
+     return new NeumaierSum();
+   }
  }
 
- function generator() {
-   return new NeumaierSum();
- }
-
-export default generator;
+export default NeumaierSum;

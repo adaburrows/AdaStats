@@ -1,29 +1,28 @@
 import Accumulator from './accumulator';
-import neumaier_sum from './neumaier_sum';
+import NeumaierSum from './neumaier_sum';
 
 /**
  * Mean accumulator
  */
 
- class Mean extends Accumulator {
+ class Mean extends NeumaierSum {
    constructor() {
      super();
-     this.sum = neumaier_sum();
      this.count = 0;
    }
 
    accumulate(value) {
-     this.sum.accumulate(value);
+     super.accumulate(value);
      this.count++;
    }
 
    valueOf() {
-     return this.sum.valueOf()/this.count;
+     return super.valueOf()/this.count;
+   }
+
+   static generator() {
+     return new Mean();
    }
  }
 
- function generator() {
-   return new Mean();
- }
-
-export default generator;
+export default Mean;

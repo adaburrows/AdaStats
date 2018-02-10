@@ -17,10 +17,10 @@ import Accumulator from './accumulator';
    valueOf() {
      return this.set;
    }
+
+   static generator() {
+     return new Set();
+   }
  }
 
- function generator() {
-   return new Set();
- }
-
-export default generator;
+export default Set;

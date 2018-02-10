@@ -1,5 +1,5 @@
 import identity_projector from './projectors/identity';
-import stateful_min_accumulator from './accumulators/stateful/min';
+import Min from './accumulators/stateful/min';
 
 /**
  * min() returns the minimum value of a data set
@@ -12,7 +12,7 @@ function min (data, projector) {
   var length = data.length;
   var getter = projector ? projector : identity_projector;
   var curr = 0;
-  var min = stateful_min_accumulator();
+  var min = new Min();
 
   for (var i = 1; i < length; i++) {
     min.accumulate(getter(data, i));

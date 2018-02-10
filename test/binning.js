@@ -112,7 +112,7 @@ describe('Binning', function() {
           [15, [11, 15, 19]],
           [25, [23, 27]]
         ];
-        var bins = stats.bin_engine(data, -10, 30, 10, stats.stateful_set_accumulator, stats.generic_accumulator);
+        var bins = stats.bin_engine(data, -10, 30, 10, stats.SetAccumulator.generator, stats.generic_accumulator);
 
         expect(bins).to.deep.equal(preworked_bins);
       });
@@ -182,7 +182,7 @@ describe('Binning', function() {
           return data[i].data.temperature;
         }
 
-        var bins = stats.bin_engine(codomain, 1, 6, 2, stats.stateful_set_accumulator, stats.generic_accumulator, filter_projector, data_projector);
+        var bins = stats.bin_engine(codomain, 1, 6, 2, stats.SetAccumulator.generator, stats.generic_accumulator, filter_projector, data_projector);
 
         expect(bins).to.deep.equal(preworked_bins);
 

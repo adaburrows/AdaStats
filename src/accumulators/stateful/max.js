@@ -19,10 +19,10 @@ import Accumulator from './accumulator';
    valueOf() {
      return this.max;
    }
+
+   static generator() {
+     return new Max();
+   }
  }
 
- function generator() {
-   return new Max();
- }
-
-export default generator;
+export default Max;

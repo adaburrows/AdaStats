@@ -1,5 +1,5 @@
 import generic_accumulator from '../accumulators/generic';
-import min from '../accumulators/stateful/min';
+import Min from '../accumulators/stateful/min';
 import bin_engine from './bin_engine';
 
 /**
@@ -14,7 +14,7 @@ import bin_engine from './bin_engine';
  * @returns {Array} - bins of arrays of data
  */
 function bin_min (data, lower_bound, upper_bound, bin_size, binning_projector, data_projector, bin_processing_function) {
-  return bin_engine(data, lower_bound, upper_bound, bin_size, min, generic_accumulator, binning_projector, data_projector, bin_processing_function);
+  return bin_engine(data, lower_bound, upper_bound, bin_size, Min.generator, generic_accumulator, binning_projector, data_projector, bin_processing_function);
 }
 
 export default bin_min;

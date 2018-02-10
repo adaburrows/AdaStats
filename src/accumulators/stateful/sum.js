@@ -17,10 +17,10 @@ import Accumulator from './accumulator';
    valueOf() {
      return this.sum;
    }
+
+   static generator() {
+     return new Sum();
+   }
  }
 
- function generator() {
-   return new Sum();
- }
-
-export default generator;
+export default Sum;

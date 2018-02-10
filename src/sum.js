@@ -1,5 +1,5 @@
 import identity_projector from './projectors/identity';
-import stateful_sum_accumulator from './accumulators/stateful/neumaier_sum';
+import Sum from './accumulators/stateful/neumaier_sum';
 
 /**
  * sum() returns the sum of a data set
@@ -11,7 +11,7 @@ import stateful_sum_accumulator from './accumulators/stateful/neumaier_sum';
 function sum (data, projector) {
   var length = data.length;
   var getter = projector ? projector : identity_projector;
-  var sum = stateful_sum_accumulator();
+  var sum = new Sum();
 
   for (var i = 0; i < length; i++) {
     sum.accumulate(getter(data, i));

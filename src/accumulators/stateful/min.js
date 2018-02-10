@@ -19,10 +19,10 @@ import Accumulator from './accumulator';
    valueOf() {
      return this.min;
    }
+
+   static generator() {
+     return new Min();
+   }
  }
 
- function generator() {
-   return new Min();
- }
-
-export default generator;
+export default Min;

@@ -1,5 +1,5 @@
 import generic_accumulator from '../accumulators/generic';
-import set from '../accumulators/stateful/set';
+import Set from '../accumulators/stateful/set';
 import bin_engine from './bin_engine';
 
 /**
@@ -15,7 +15,7 @@ import bin_engine from './bin_engine';
  * @returns {Array} - bins of arrays of data
  */
 function bin_data (data, lower_bound, upper_bound, bin_size, binning_projector, data_projector, bin_processing_function) {
-  return bin_engine(data, lower_bound, upper_bound, bin_size, set, generic_accumulator, binning_projector, data_projector, bin_processing_function);
+  return bin_engine(data, lower_bound, upper_bound, bin_size, Set.generator, generic_accumulator, binning_projector, data_projector, bin_processing_function);
 }
 
 export default bin_data;

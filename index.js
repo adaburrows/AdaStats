@@ -33,12 +33,12 @@ export {default as deviation} from './src/deviation';
 
 // Accumulator functions
 export {default as generic_accumulator} from './src/accumulators/generic';
-export {default as stateful_set_accumulator} from './src/accumulators/stateful/set';
-export {default as stateful_sum_accumulator} from './src/accumulators/stateful/sum';
-export {default as stateful_neumaier_sum_accumulator} from './src/accumulators/stateful/neumaier_sum';
-export {default as stateful_min_accumulator} from './src/accumulators/stateful/min';
-export {default as stateful_max_accumulator} from './src/accumulators/stateful/max';
-export {default as stateful_mean_accumulator} from './src/accumulators/stateful/mean';
+export {default as SetAccumulator} from './src/accumulators/stateful/set';
+export {default as SumAccumulator} from './src/accumulators/stateful/sum';
+export {default as NeumaierSumAccumulator} from './src/accumulators/stateful/neumaier_sum';
+export {default as MinAccumulator} from './src/accumulators/stateful/min';
+export {default as MaxAccumulator} from './src/accumulators/stateful/max';
+export {default as MeanAccumulator} from './src/accumulators/stateful/mean';
 
 // Binning functions
 export {default as bin_size} from './src/binning/bin_size';
