@@ -15,6 +15,77 @@ If you need more functionality I highly recommend [Simple Statistics](https://si
 ## Usage Examples
 Please [take a look at the tests for usage examples](https://github.com/adaburrows/AdaStats/tree/master/test) until I write more documentation.
 
+```
+var Stats = require('AdaStats');
+
+var codomain = [
+  {
+    date: 1,
+    data: {
+      temperature: 95,
+      humidity: 20,
+      windspeed: 100
+    }
+  },
+  {
+    date: 2,
+    data: {
+      temperature: 200,
+      humidity: 80,
+      windspeed: 95
+    }
+  },
+  {
+    date: 3,
+    data: {
+      temperature: -300,
+      humidity: 0,
+      windspeed: 0
+    }
+  },
+  {
+    date: 4,
+    data: {
+      temperature: -250,
+      humidity: 0,
+      windspeed: 0
+    }
+  },
+  {
+    date: 5,
+    data: {
+      temperature: 30,
+      humidity: 10,
+      windspeed: 40
+    }
+  },
+  {
+    date: 6,
+    data: {
+      temperature: 95,
+      humidity: 30,
+      windspeed: 100
+    }
+  }
+];
+
+function filter_projector(data, i) {
+  return data[i].date;
+}
+
+function data_projector(data, i) {
+  return data[i].data.temperature;
+}
+
+var bins = Stats.bin_engine(codomain, 1, 6, 2, Stats.SetAccumulator.generator, Stats.generic_accumulator, filter_projector, data_projector);
+
+// bins = [
+//   [2, [95, 200]],
+//   [4, [-300, -250]],
+//   [6, [30, 95]]
+// ];
+```
+
 ## Possible Improvements
 Currently, this is inefficient for many repeated queries of binning the same data over and over again. It could be improved by using [hash maps](https://en.wikipedia.org/wiki/Hash_table) and [interval trees](https://en.wikipedia.org/wiki/Interval_tree). Sorting data ahead of time may allow a few additional optimizations. At the moment the algorithms run at O(n), but with a few optimizations it could take more upfront time to process the data so that repeated queries could be faster. Of course the decision to undertake that optimization depends on use cases. If the data is only queried twice, it's not worth it since some of the data structures require O(n log n) time to construct with a speed up of only O(log n + m) from O(n).
 
