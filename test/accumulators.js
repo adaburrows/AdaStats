@@ -9,7 +9,7 @@ describe('Accumulators', function() {
 
       it('should accumulate values in a set', function() {
         var test = [1,2,3,4,5];
-        var s = new stats.stateful_set_accumulator();
+        var s = stats.stateful_set_accumulator();
 
         for (var i = 0; i < 5; i++) {
           s.accumulate(test[i]);
@@ -23,7 +23,7 @@ describe('Accumulators', function() {
 
       it('should accumulate values in a sum', function() {
         var test = [1,2,3,4,5];
-        var s = new stats.stateful_sum_accumulator();
+        var s = stats.stateful_sum_accumulator();
 
         for (var i = 0; i < 5; i++) {
           s.accumulate(test[i]);
@@ -61,7 +61,7 @@ describe('Accumulators', function() {
 
       it('should accumulate the smallest value', function() {
         var test = [5,4,3,2,1];
-        var s = new stats.stateful_min_accumulator();
+        var s = stats.stateful_min_accumulator();
 
         for (var i = 0; i < 5; i++) {
           s.accumulate(test[i]);
@@ -75,7 +75,7 @@ describe('Accumulators', function() {
 
       it('should accumulate the greatest value', function() {
         var test = [5,4,3,2,1];
-        var s = new stats.stateful_max_accumulator();
+        var s = stats.stateful_max_accumulator();
 
         for (var i = 0; i < 5; i++) {
           s.accumulate(test[i]);
@@ -89,7 +89,7 @@ describe('Accumulators', function() {
 
       it('should accumulate the mean of the values', function() {
         var test = [5,4,3,2,1];
-        var s = new stats.stateful_mean_accumulator();
+        var s = stats.stateful_mean_accumulator();
 
         for (var i = 0; i < 5; i++) {
           s.accumulate(test[i]);
@@ -104,7 +104,7 @@ describe('Accumulators', function() {
       it('should adapt an accumulator to a set of bins', function() {
         var bins = [];
         var i = 0;
-        bins[i] = new stats.stateful_set_accumulator();
+        bins[i] = stats.stateful_set_accumulator();
         stats.generic_accumulator(bins, i, 42);
         expect(bins[i].valueOf()).to.include(42);
       });
