@@ -44,6 +44,7 @@ export {default as stateful_set_accumulator} from './src/accumulators/stateful/s
 export {default as stateful_sum_accumulator} from './src/accumulators/stateful/sum';
 export {default as stateful_min_accumulator} from './src/accumulators/stateful/min';
 export {default as stateful_max_accumulator} from './src/accumulators/stateful/max';
+export {default as stateful_mean_accumulator} from './src/accumulators/stateful/mean';
 
 // Binning functions
 export {default as bin_size} from './src/binning/bin_size';

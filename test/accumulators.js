@@ -102,7 +102,7 @@ describe('Accumulators', function() {
 
     describe('Max accumulator', function() {
 
-      it('should accumulate the greates value', function() {
+      it('should accumulate the greatest value', function() {
         var test = [5,4,3,2,1];
         var s = new stats.stateful_max_accumulator();
 
@@ -110,6 +110,20 @@ describe('Accumulators', function() {
           s.accumulate(test[i]);
         }
         expect(s.valueOf()).to.equal(5);
+      });
+
+    });
+
+    describe('Mean accumulator', function() {
+
+      it('should accumulate the mean of the values', function() {
+        var test = [5,4,3,2,1];
+        var s = new stats.stateful_mean_accumulator();
+
+        for (var i = 0; i < 5; i++) {
+          s.accumulate(test[i]);
+        }
+        expect(s.valueOf()).to.equal(3);
       });
 
     });

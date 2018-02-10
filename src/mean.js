@@ -1,5 +1,5 @@
 import identity_projector from './projectors/identity';
-import stateful_sum_accumulator from './accumulators/stateful/sum';
+import stateful_mean_accumulator from './accumulators/stateful/mean';
 
 /**
  * mean() returns the mean (first moment) of a data set
@@ -11,12 +11,12 @@ import stateful_sum_accumulator from './accumulators/stateful/sum';
 function mean (data, projector) {
   var length = data.length;
   var getter = projector ? projector : identity_projector;
-  var sum = new stateful_sum_accumulator();
+  var mean = new stateful_mean_accumulator();
 
   for (var i = 0; i < length; i++) {
-    sum.accumulate(getter(data, i));
+    mean.accumulate(getter(data, i));
   }
-  return sum.valueOf() / length;
+  return mean.valueOf();
 }
 
 export default mean;
